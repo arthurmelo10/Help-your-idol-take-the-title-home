@@ -1,10 +1,20 @@
 body {
     margin: 0;
     background-color: darkseagreen;
-    font-style: ;
+    font-family: sans-serif;
+    background-size: cover;
+    background-image: url('/Images/soccer-stadium_test.jpg')
 }
 
-div {
-    color: white;
+.main{
+    width: 100vw;
+    height: 100vh;
+    ;
+}
+
+.introduction {
+    margin-top:250px;
+    color: whitesmoke;
     text-align: center;
+    font-size: 80px;
 }
