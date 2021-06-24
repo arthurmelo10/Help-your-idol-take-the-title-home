@@ -1,18 +1,27 @@
 window.onload = () => {
-   
-  const canvas = document.getElementsByClassName("canvas");
-  const ctx = canvas.getContext('2d');
   
-  class Backgroung {
-     constructor() {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext('2d');
+    
+  class Background {
+     constructor(source) {
        this.posX = 0;
        this.posY = 0;
 
        const img = new Image();
-       img.src = 
-     }
-     
-   }
+       img.src = source;
+       img.onload = () => {
+         this.img = img;
+         this.draw();
+        }
+    }
+    draw() {
+      ctx.drawImage(this.img, this.posX, this.posY, canvas.width, canvas.height);  
+    }     
+  }
+  
+  const background = new Background('./Images/view-of-football-field-vector_test.jpg');
+  // background.draw();
   // class Maze {
 
     // }
