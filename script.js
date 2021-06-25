@@ -20,8 +20,45 @@ window.onload = () => {
     }     
   }
   
-  const background = new Background('./Images/view-of-football-field-vector_test.jpg');
-  // background.draw();
+  const background = new Background('./Images/view-of-football-field-vector_test.jpg'); //https://www.vecteezy.com/vector-art/1265829-view-of-football-field
+
+ 
+  
+  class Player {
+    constructor(source, x, y, w, h){
+      this.posX = x;
+      this.posy = y;
+      this.width = w;
+      this.height = h;
+      
+      const img = new Image();
+      img.src = source;
+      img.onload = () => {
+        this.img = img;
+        this.draw();
+      }
+    }
+    draw() {
+      ctx.drawImage(this.img, this.posX, this.posY, this.width, this.height);
+    }
+  }
+
+  // const player = new Player('./Images/noun_LionelMessi_1704225_test.png', 50, 50, 50, 50);
+
+//  function updateCanvas(){
+//   // background.draw();
+//   // player.draw();
+//   requestAnimationFrame(updateCanvas);
+//  }
+
+const playerImg = new Image();
+playerImg.src = 'Images/messi_test.png'
+ctx.drawImage(playerImg, 50, 50, 200, 200);
+document.body.appendChild(playerImg);
+console.log(playerImg)
+
+//  updateCanvas();
+  
   // class Maze {
 
     // }
