@@ -1,7 +1,32 @@
 window.onload = () => {
   
   const canvas = document.getElementById("canvas");
+  const start = document.getElementById("start-game");
   const ctx = canvas.getContext('2d');
+
+  start.addEventListener('click', updateCanvas)
+
+  document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+      case 'ArrowLeft':
+        player.moveLeft();
+        break;
+      case 'ArrowRight':
+        player.moveRight();
+        break;
+      case 'ArrowUp':
+        player.moveUp();
+        break;
+      case 'ArrowDown':
+        player.moveDown();
+        break;
+    }
+  })
+
+ 
+  function clearCanvas() {
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+  }
     
   class Background {
      constructor(source) {
@@ -12,7 +37,7 @@ window.onload = () => {
        img.src = source;
        img.onload = () => {
          this.img = img;
-         this.draw();
+        //  this.draw();
         }
     }
     draw() {
@@ -28,28 +53,55 @@ window.onload = () => {
       this.posY = y;
       this.width = w;
       this.height = h;
+      this.speed = 10;
       
       const img = new Image();
       img.src = source;
       img.onload = () => {
         this.img = img;
         console.log('teste')
-        this.draw();
+        // this.draw();
       }
     }
     draw() {
       ctx.drawImage(this.img, this.posX, this.posY, this.width, this.height);
-      console.log(this)
+      // console.log(this)
+    }
+    moveLeft(){
+      if(this.posX > 0){
+        this.posX -= this.speed;
+      }
+    }
+    moveRight(){
+      if(this.posX < canvas.width - this.width){
+        this.posX += this.speed;
+      }
+    }
+    moveUp(){
+      if(this.posY > 0){
+        this.posY -= this.speed;
+      }
+    }
+    moveDown(){
+      if(this.posY < canvas.height - this.width){
+        this.posY += this.speed;
+      }
     }
   }
 
   const player = new Player('./Images/Messi.png', 250, 180, 50, 50);
 
-//  function updateCanvas(){
-//   // background.draw();
-//   // player.draw();
-//   requestAnimationFrame(updateCanvas);
-//  }
+ function updateCanvas(){
+  console.log(updateCanvas);
+  clearCanvas();
+  background.draw();
+  player.draw();
+  requestAnimationFrame(updateCanvas);
+ }
+
+
+
+//  setTimeout(updateCanvas, 2000); 
 
 // const playerImg = new Image();
 // playerImg.src = 'Images/messi_test.png'
