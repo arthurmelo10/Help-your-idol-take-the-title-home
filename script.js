@@ -196,10 +196,14 @@ window.onload = () => {
   function gameOver(){
     if(score >= 4){
       ctx.fillStyle = "red";
-      ctx.fillText("VICTORY !!", 250, 180);
+      ctx.font = '72px cursive';
+      ctx.textAlign = 'center';
+      ctx.fillText("VICTORY !!", 275, 215);
     } else {
       ctx.fillStyle = "black";
-      ctx.fillText("IT'S OVER", 250, 180);
+      ctx.font = '72px cursive';
+      ctx.textAlign = 'center';
+      ctx.fillText("IT'S OVER", 275, 215); 
     }
   }
  
