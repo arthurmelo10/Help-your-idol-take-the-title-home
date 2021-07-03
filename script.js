@@ -7,7 +7,15 @@ window.onload = () => {
   const ctx = canvas.getContext('2d');
   
 
-  start.addEventListener('click', updateCanvas)
+  let counter = 15
+  
+  start.addEventListener('click', () => {
+    let intervalId = setInterval(() => {
+      counter -=1
+      if(counter === 0) clearInterval(intervalId)
+    },1000)
+    updateCanvas();    
+  })
   // timer.addEventListener('click', updateCanvas)
 
   document.addEventListener('keydown', (e) => {
@@ -297,11 +305,6 @@ window.onload = () => {
     }
   }
 
-  let counter = 15
-  let intervalId = setInterval(() => {
-    counter -=1
-    if(counter === 0) clearInterval(intervalId)
-  },1000)
   
   function showTime(){
     return timer.innerHTML = counter;
