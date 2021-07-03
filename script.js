@@ -7,7 +7,7 @@ window.onload = () => {
   const ctx = canvas.getContext('2d');
   
 
-  let counter = 15
+  let counter = 12
   
   start.addEventListener('click', () => {
     let intervalId = setInterval(() => {
