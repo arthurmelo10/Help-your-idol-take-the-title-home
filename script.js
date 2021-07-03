@@ -74,43 +74,39 @@ window.onload = () => {
         // console.log(this)
       }
       top(){
-        return this.posY;
+        return this.posY + 10;
       }
       bottom(){
-        return this.posY + this.height
+        return this.posY + this.height - 10
       }
       left(){
-        return this.posX;
+        return this.posX + 20;
       }
       right(){
-        return this.posX + this.width;
+        return this.posX + this.width - 20;
       }
       moveLeft(){
-        if((this.posX > 0) && !wallsCollision()){
-          this.posX -= this.speed;
-        } else {
-          this.posX + 1
+        this.posX -= this.speed;
+        if((this.posX < 0) || wallsCollision()){
+          this.posX += this.speed;
         }
       }
       moveRight(){
-        if((this.posX < canvas.width - this.width) && !wallsCollision()){
-          this.posX += this.speed;
-        } else {
-          this.posX - 1
+        this.posX += this.speed;
+        if((this.posX > canvas.width - this.width) || wallsCollision()){
+          this.posX -= this.speed;
         }
       }
       moveUp(){
-        if((this.posY > 0) && !wallsCollision()){
-          this.posY -= this.speed;
-       } else {
-         this.posY + 1
+        this.posY -= this.speed;
+        if((this.posY < 0) || wallsCollision()){
+          this.posY += this.speed;
        }
       }
       moveDown(){
-        if((this.posY < canvas.height - this.width) && !wallsCollision()){
-          this.posY += this.speed;
-        } else {
-          this.posY - 1
+        this.posY += this.speed;
+        if((this.posY > canvas.height - this.width) || wallsCollision()){
+          this.posY -= this.speed;
         }
       }
       checkCollision(obj){
@@ -294,7 +290,7 @@ window.onload = () => {
   }
   
   function wallsCollision() {
-    for( let i = 0; i < walls.length; i+=1){
+    for(let i = 0; i < walls.length; i+=1){
       if(player.checkCollision(walls[i])){
         return true
       }
