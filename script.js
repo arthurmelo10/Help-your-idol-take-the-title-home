@@ -105,7 +105,6 @@ window.onload = () => {
        } else {
          this.posY + 1
        }
-
       }
       moveDown(){
         if((this.posY < canvas.height - this.width) && !wallsCollision()){
